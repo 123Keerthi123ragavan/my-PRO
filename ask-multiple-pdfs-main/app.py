@@ -5,7 +5,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationBufferMemory 
+from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
@@ -52,9 +52,7 @@ def get_conversation_chain(vectorstore):
 
 
 def handle_userinput(user_question):
-  if 'conversation' not in st.session_state:
-    st.session_state.conversation = {f"user_question: {user_question}"}
-
+    response = st.session_state.conversation({'question': user_question})
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):
@@ -78,7 +76,7 @@ def main():
         st.session_state.chat_history = None
 
     st.header("Seyasoft PDF G.P.T :books:")
-   user_question = get_user_question("Ask a question about your documents:")
+    user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
 
