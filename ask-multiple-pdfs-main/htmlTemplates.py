@@ -23,6 +23,12 @@ css = '''
   padding: 0 1.5rem;
   color: #fff;
 }
+@media only screen and (min-width: 320px) and (max-width: 991px){
+.chat-message .message {
+    padding: 0 0px 0 23px;
+}
+}
+
 '''
 
 bot_template = '''
