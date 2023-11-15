@@ -67,7 +67,7 @@ def handle_userinput(user_question):
 def main():
     load_dotenv()
     st.set_page_config(page_title="Raghavan's AI",
-                       page_icon=":AI:")
+                       page_icon=":eos-icons:ai:")
     st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
